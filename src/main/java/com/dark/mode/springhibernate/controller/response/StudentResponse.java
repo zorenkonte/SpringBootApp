@@ -4,7 +4,7 @@ import com.dark.mode.springhibernate.model.Student;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CustomStudentResponse {
+public class StudentResponse {
 
     private Iterable<Student> studentList;
 
@@ -15,4 +15,5 @@ public class CustomStudentResponse {
     public void setStudentList(Iterable<Student> studentList) {
         this.studentList = studentList;
     }
+
 }
