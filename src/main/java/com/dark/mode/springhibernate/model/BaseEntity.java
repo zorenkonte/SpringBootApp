@@ -1,5 +1,7 @@
 package com.dark.mode.springhibernate.model;
 
+import org.springframework.core.style.ToStringCreator;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,5 +17,12 @@ public class BaseEntity implements Serializable {
 
     public Integer getId() {
         return id;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringCreator(this)
+                .append("id", this.getId())
+                .toString();
     }
 }

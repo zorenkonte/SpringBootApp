@@ -14,4 +14,5 @@ public interface StudentService {
 
     Iterable<Student> findByLastName(String lastName);
 
+    Student findTopByEmailLike(String email);
 }

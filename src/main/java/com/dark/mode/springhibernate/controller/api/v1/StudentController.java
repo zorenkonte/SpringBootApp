@@ -1,7 +1,6 @@
 package com.dark.mode.springhibernate.controller.api.v1;
 
 import com.dark.mode.springhibernate.controller.response.StudentResponse;
-import com.dark.mode.springhibernate.dto.StudentDTO;
 import com.dark.mode.springhibernate.exception.ResourceNotFoundException;
 import com.dark.mode.springhibernate.model.Student;
 import com.dark.mode.springhibernate.service.StudentService;
@@ -13,23 +12,18 @@ import org.springframework.web.bind.annotation.*;
 public class StudentController {
 
     private final StudentService studentService;
-    private final StudentDTO studentDTO;
+    private final StudentResponse studentResponse;
 
     @Autowired
-    public StudentController(StudentService studentService, StudentDTO studentDTO) {
+    public StudentController(StudentService studentService, StudentResponse studentResponse) {
         this.studentService = studentService;
-        this.studentDTO = studentDTO;
-    }
-
-    @GetMapping("/hello")
-    public String hello(@RequestParam(defaultValue = "World") String name) {
-        return String.format("Hello, %s", name);
+        this.studentResponse = studentResponse;
     }
 
     @GetMapping("/all")
     public StudentResponse students() {
-        studentDTO.setStudentList(studentService.all());
-        return studentDTO.getStudentResponse();
+        studentResponse.setStudentList(studentService.all());
+        return studentResponse;
     }
 
     @GetMapping("/{id}")
@@ -37,10 +31,16 @@ public class StudentController {
         return studentService.getCustomer(id).orElseThrow(() -> new ResourceNotFoundException("Student", "id", id));
     }
 
+    @GetMapping("/email/{email}")
+    public Student getTopByEmailLike(@PathVariable String email) {
+        String emailFormat = String.format("%%%s%%", email);
+        return studentService.findTopByEmailLike(emailFormat);
+    }
+
     @GetMapping("/lastname/{lastName}")
     public StudentResponse getByLastName(@PathVariable String lastName) {
-        studentDTO.setStudentList(studentService.findByLastName(lastName));
-        return studentDTO.getStudentResponse();
+        studentResponse.setStudentList(studentService.findByLastName(lastName));
+        return studentResponse;
     }
 
     @PatchMapping("/patch")

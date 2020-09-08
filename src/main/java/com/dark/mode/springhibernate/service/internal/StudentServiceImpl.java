@@ -38,4 +38,9 @@ public class StudentServiceImpl implements StudentService {
         return repository.findByLastName(name);
     }
 
+    @Override
+    public Student findTopByEmailLike(String email) {
+        return repository.findTopByEmailLike(email);
+    }
+
 }

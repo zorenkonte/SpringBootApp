@@ -32,10 +32,8 @@ public class Student extends Person {
     @Override
     public String toString() {
         return new ToStringCreator(this)
-                .append("id", this.getId())
-                .append("firstName", this.getFirstName())
-                .append("lastName", this.getLastName())
                 .append("email", this.getEmail())
+                .append(super.toString())
                 .toString();
     }
 }

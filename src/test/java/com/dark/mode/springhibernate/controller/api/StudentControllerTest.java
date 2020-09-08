@@ -1,7 +1,7 @@
 package com.dark.mode.springhibernate.controller.api;
 
 import com.dark.mode.springhibernate.controller.api.v1.StudentController;
-import com.dark.mode.springhibernate.dto.StudentDTO;
+import com.dark.mode.springhibernate.controller.response.StudentResponse;
 import com.dark.mode.springhibernate.model.Student;
 import com.dark.mode.springhibernate.service.StudentService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,7 +32,7 @@ class StudentControllerTest {
     @MockBean
     private StudentService studentService;
     @MockBean
-    private StudentDTO studentDTO;
+    private StudentResponse studentDTO;
     @Autowired
     private MockMvc mockMvc;
 
@@ -64,7 +64,7 @@ class StudentControllerTest {
 
     @Test
     void getStudents() throws Exception {
-        given(studentDTO.getStudentResponse().getStudentList()).willReturn(studentList);
+//        given(studentDTO.getStudentResponse().getStudentList()).willReturn(studentList);
         MvcResult mvcResult = mockMvc.perform(get("/student/v1/all"))
                 .andExpect(status().isOk())
                 .andReturn();

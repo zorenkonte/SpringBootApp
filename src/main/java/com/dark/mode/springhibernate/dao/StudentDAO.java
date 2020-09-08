@@ -9,4 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 public interface StudentDAO extends StudentRepository {
     @Transactional(readOnly = true)
     Iterable<Student> findByLastName(String lastName);
+
+    @Transactional(readOnly = true)
+    Student findTopByEmailLike(String email);
 }
