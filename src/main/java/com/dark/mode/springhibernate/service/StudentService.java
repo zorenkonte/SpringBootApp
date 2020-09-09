@@ -10,9 +10,11 @@ public interface StudentService {
 
     Student save(Student student);
 
-    Optional<Student> getCustomer(Integer id);
+    Optional<Student> getStudent(Integer id);
 
     Iterable<Student> findByLastName(String lastName);
 
     Student findTopByEmailLike(String email);
+
+    void delete(Student student);
 }

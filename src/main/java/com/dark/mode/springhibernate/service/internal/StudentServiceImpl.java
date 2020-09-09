@@ -29,7 +29,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Optional<Student> getCustomer(Integer id) {
+    public Optional<Student> getStudent(Integer id) {
         return repository.findById(id);
     }
 
@@ -41,6 +41,11 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Student findTopByEmailLike(String email) {
         return repository.findTopByEmailLike(email);
+    }
+
+    @Override
+    public void delete(Student student) {
+        repository.delete(student);
     }
 
 }
