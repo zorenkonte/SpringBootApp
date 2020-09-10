@@ -1,6 +1,5 @@
 package com.dark.mode.springhibernate.model;
 
-import org.springframework.context.annotation.Lazy;
 import org.springframework.core.style.ToStringCreator;
 
 import javax.persistence.CascadeType;
@@ -14,7 +13,6 @@ public class Person extends BaseEntity {
     private String firstName;
     private String lastName;
 
-    @Lazy
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "address_id")
     private Address address;

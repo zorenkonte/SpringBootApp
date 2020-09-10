@@ -9,8 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
-
 @RestController
 @RequestMapping("/student/v1")
 public class StudentController {
@@ -32,13 +30,14 @@ public class StudentController {
 
     @GetMapping("/{id}")
     public Student getStudentById(@PathVariable Integer id) throws ResourceNotFoundException {
-        return studentService.getStudent(id).orElseThrow(() -> new ResourceNotFoundException("Student", "id", id));
+        return studentService.getStudentById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Student", "id", id));
     }
 
     @GetMapping("/email/{email}")
-    public Student getTopByEmailLike(@PathVariable String email) {
-        String emailFormat = String.format("%%%s%%", email);
-        return studentService.findTopByEmailLike(emailFormat);
+    public Student getTopByEmailLike(@PathVariable String email) throws ResourceNotFoundException {
+        return studentService.findTopByEmailLike(emailFormat(email))
+                .orElseThrow(() -> new ResourceNotFoundException("Student", "email", email));
     }
 
     @GetMapping("/lastname/{lastName}")
@@ -48,14 +47,10 @@ public class StudentController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> delete(@PathVariable Integer id) throws ResourceNotFoundException, AssertionError {
-        Optional<Student> student = studentService.getStudent(id);
-        if (student.isPresent()) {
-            studentService.delete(student.get());
-            return new ResponseEntity<>(this.responseMessage(student.get()), HttpStatus.OK);
-        } else {
-            throw new ResourceNotFoundException("Student", "id", id);
-        }
+    public ResponseEntity<String> delete(@PathVariable Integer id) throws ResourceNotFoundException {
+        Student student = this.getStudentById(id);
+        studentService.delete(student);
+        return new ResponseEntity<>(responseMessage(student), HttpStatus.OK);
     }
 
     @PatchMapping("/patch")
@@ -69,11 +64,15 @@ public class StudentController {
     }
 
     private String responseMessage(Student student) {
-        return String.format("Student: %s with id %s successfully deleted!", this.fullName(student), student.getId());
+        return String.format("Student: %s with id %s successfully deleted!", fullName(student), student.getId());
     }
 
     private String fullName(Student student) {
         return String.format("%s, %s", student.getLastName(), student.getFirstName());
+    }
+
+    private String emailFormat(String email) {
+        return String.format("%%%s%%", email);
     }
 
 }

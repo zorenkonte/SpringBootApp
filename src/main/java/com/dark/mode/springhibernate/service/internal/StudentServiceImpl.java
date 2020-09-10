@@ -1,6 +1,7 @@
 package com.dark.mode.springhibernate.service.internal;
 
 import com.dark.mode.springhibernate.dao.StudentDAO;
+import com.dark.mode.springhibernate.exception.ResourceNotFoundException;
 import com.dark.mode.springhibernate.model.Student;
 import com.dark.mode.springhibernate.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Optional<Student> getStudent(Integer id) {
+    public Optional<Student> getStudentById(Integer id) throws ResourceNotFoundException {
         return repository.findById(id);
     }
 
@@ -39,12 +40,12 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student findTopByEmailLike(String email) {
+    public Optional<Student> findTopByEmailLike(String email) throws ResourceNotFoundException {
         return repository.findTopByEmailLike(email);
     }
 
     @Override
-    public void delete(Student student) {
+    public void delete(Student student) throws ResourceNotFoundException {
         repository.delete(student);
     }
 

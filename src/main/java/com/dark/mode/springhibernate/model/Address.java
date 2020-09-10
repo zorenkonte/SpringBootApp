@@ -1,12 +1,10 @@
 package com.dark.mode.springhibernate.model;
 
-import org.springframework.context.annotation.Lazy;
 import org.springframework.core.style.ToStringCreator;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Lazy
 @Entity
 @Table(name = "address")
 public class Address extends BaseEntity {
