@@ -1,0 +1,8 @@
+
+${AnsiColor.RED}#   _______       ___      .______       __  ___ .___  ___.   ______    _______   _______ ___   ___   ___
+${AnsiColor.YELLOW}#  |       \     /   \     |   _  \     |  |/  / |   \/   |  /  __  \  |       \ |   ____|\  \  \  \  \  \
+${AnsiColor.GREEN}#  |  .--.  |   /  ^  \    |  |_)  |    |  '  /  |  \  /  | |  |  |  | |  .--.  ||  |__    \  \  \  \  \  \
+${AnsiColor.BLUE}#  |  |  |  |  /  /_\  \   |      /     |    <   |  |\/|  | |  |  |  | |  |  |  ||   __|    >  >  >  >  >  >
+${AnsiColor.CYAN}#  |  '--'  | /  _____  \  |  |\  \----.|  .  \  |  |  |  | |  `--'  | |  '--'  ||  |____  /  /  /  /  /  /
+${AnsiColor.MAGENTA}#  |_______/ /__/     \__\ | _| `._____||__|\__\ |__|  |__|  \______/  |_______/ |_______|/__/  /__/  /__/
+${AnsiColor.BLUE}#${AnsiColor.GREEN}  :: Built with Spring Boot :: ${AnsiColor.BRIGHT_RED}(v${spring-boot.version})
