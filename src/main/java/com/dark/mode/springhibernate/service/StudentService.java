@@ -11,6 +11,8 @@ public interface StudentService {
 
     Student save(Student student);
 
+    Student update(Student student) throws ResourceNotFoundException;
+
     Optional<Student> getStudentById(Integer id) throws ResourceNotFoundException;
 
     Iterable<Student> findByLastName(String lastName);

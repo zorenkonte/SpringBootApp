@@ -54,8 +54,11 @@ public class StudentController {
     }
 
     @PatchMapping("/patch")
-    public Student update(@RequestBody Student student) {
-        return studentService.save(student);
+    public Student update(@RequestBody Student student) throws ResourceNotFoundException {
+        if (student.getId() == null) {
+            throw new ResourceNotFoundException("Student", "id", "null");
+        }
+        return studentService.update(student);
     }
 
     @PostMapping("/save")

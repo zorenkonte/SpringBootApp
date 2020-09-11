@@ -30,6 +30,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public Student update(Student student) throws ResourceNotFoundException {
+        return repository.save(student);
+    }
+
+    @Override
     public Optional<Student> getStudentById(Integer id) throws ResourceNotFoundException {
         return repository.findById(id);
     }
