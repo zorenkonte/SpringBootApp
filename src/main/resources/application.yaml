@@ -1,0 +1,52 @@
+#server
+server:
+  port: 8080
+  address: 127.0.0.1
+  error:
+    include-stacktrace: never
+
+#spring
+spring:
+  application:
+    name: spring-boot-app
+  #hibernate jpa
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        ddl-auto: update
+    show-sql: true
+  #datasource
+  datasource:
+    url: ${MYSQL_URL:jdbc:mysql://${MYSQL_HOST:sample_host}:sample_port/sample_db}
+    username: ${MYSQL_USER:sample_user}
+    password: ${MYSQL_PASS:sample_pass}
+  #sba client
+  boot:
+    admin:
+      client:
+        url: http://localhost:8090
+        username: ${SBA_USER:sample_user}
+        password: ${SBA_PASS:sample_pass}
+
+#info
+info:
+  doc: http://darkmode.ph
+  tags:
+    environment: spring-boot-dev-mode
+
+#logging
+logging:
+  file:
+    name: target/app.log
+
+#actuator/management
+management:
+  endpoints:
+    web:
+      base-path: /manage
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

@@ -5,4 +5,4 @@ ${AnsiColor.GREEN}#  |  .--.  |   /  ^  \    |  |_)  |    |  '  /  |  \  /  | | 
 ${AnsiColor.BLUE}#  |  |  |  |  /  /_\  \   |      /     |    <   |  |\/|  | |  |  |  | |  |  |  ||   __|    >  >  >  >  >  >
 ${AnsiColor.CYAN}#  |  '--'  | /  _____  \  |  |\  \----.|  .  \  |  |  |  | |  `--'  | |  '--'  ||  |____  /  /  /  /  /  /
 ${AnsiColor.MAGENTA}#  |_______/ /__/     \__\ | _| `._____||__|\__\ |__|  |__|  \______/  |_______/ |_______|/__/  /__/  /__/
-${AnsiColor.BLUE}#${AnsiColor.GREEN}  :: Built with Spring Boot :: ${AnsiColor.BRIGHT_RED}(v${spring-boot.version})
+${AnsiColor.BLUE}#${AnsiColor.GREEN}  :: Built with Spring Boot ::${AnsiColor.BRIGHT_RED}${spring-boot.formatted-version}

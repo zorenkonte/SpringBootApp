@@ -1,4 +1,4 @@
-package com.dark.mode.springhibernate.cofig;
+package com.dark.mode.springhibernate.config;
 
 import org.springframework.boot.actuate.audit.AuditEventRepository;
 import org.springframework.boot.actuate.audit.InMemoryAuditEventRepository;
